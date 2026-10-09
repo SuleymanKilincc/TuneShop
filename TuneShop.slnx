@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="TuneShop.ConsoleApp/TuneShop.ConsoleApp.csproj" />
+  <Project Path="TuneShop.Core/TuneShop.Core.csproj" />
+</Solution>
