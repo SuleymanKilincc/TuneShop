@@ -8,18 +8,18 @@ namespace TuneShop.Core.Parts
         public required int Diameter { get; set; }
         public required int PadThickness { get; set; }
         public required int RotorThickness { get; set; }
-        public required BrakeType Type { get; set; }
+        public required BrakeType BrakeType { get; set; }
 
     
         public override string Describe()
         {
-            return $"Brake: {Name}, {Diameter} mm, pad thickness {PadThickness} mm, rotor thickness {RotorThickness} mm, {Type}, {Price:C}, {Weight} kg";
+            return $"Brake: {Name}, {Diameter} mm, pad thickness {PadThickness} mm, rotor thickness {RotorThickness} mm, {BrakeType}, {Price:C}, {Weight} kg";
         }
 
         
         public override int CalculateScore()
         {
-            int typeBase = Type switch
+            int typeBase = BrakeType switch
             {
                 BrakeType.Street => 40,
                 BrakeType.Sport => 60,

@@ -1,51 +1,59 @@
 ﻿using TuneShop.Core.Enums;
+using TuneShop.Core.Models;
 using TuneShop.Core.Parts;
+
+Vehicle car1 = new Vehicle("Coupe GT", 200, 250, 1250, VehicleType.Sport, 2018);
+Build build1 = new Build(car1);
+
+Vehicle car2 = new Vehicle("Sedan LX", 150, 200, 1500, VehicleType.Sport, 2019);
+Build build2 = new Build(car2);
 
 Engine engine = new Engine
 {
-    Id = 1,
     Name = "V8 Turbo",
-    Price = 15000m,
-    Weight = 220,
+    Horsepower = 400,
+    Torque = 500,
     Cylinders = 8,
     DisplacementCc = 4000,
-    Horsepower = 500,
-    Torque = 600,
     MaxRpm = 7000,
-    FuelType = FuelType.Petrol
+    FuelType = FuelType.Petrol,
+    Weight = 250,
+    Price = 8000
 };
 
 Tire tire = new Tire
 {
-    Id = 2,
-    Name = "Sport Contact",
-    Price = 8000m,
-    Weight = 9,
-    Width = 225,
-    AspectRatio = 45,
-    Diameter = 17,
-    Type = TireType.Sport,
-
+    Name = "Performance Tires",
+    Diameter = 20,
+    Width = 250,
+    AspectRatio = 35,
+    TireType = TireType.Sport,
+    Weight = 20,
+    Price = 500
 };
 
 Brake brake = new Brake
 {
-    Id = 3,
-    Name = "Brembo GT",
-    Price = 1200m,
-    Weight = 15,
+    Name = "High-Performance Brakes",
     Diameter = 350,
     PadThickness = 30,
-    RotorThickness = 28,
-    Type = BrakeType.Sport,
+    RotorThickness = 20,    
+    BrakeType = BrakeType.Sport,
+    Weight = 15,
+    Price = 1000
 };
 
 
-List<Part> parts = new List<Part> { engine, tire, brake };
+build1.AddPart(engine);
+build1.AddPart(tire);
+build1.AddPart(brake);
 
-foreach (var part in parts)
+
+try
 {
-    Console.WriteLine(part.Describe());
-    Console.WriteLine($"Performance Score: {part.CalculateScore()}");
-    Console.WriteLine();
+    build1.AddPart(engine);   
+}
+catch (InvalidOperationException ex)
+{
+    Console.WriteLine($"Error: {ex.Message}");
 }

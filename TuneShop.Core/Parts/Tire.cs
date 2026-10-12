@@ -7,16 +7,16 @@ namespace TuneShop.Core.Parts
         public required int Width { get; set; }
         public required int AspectRatio { get; set; }
         public required int Diameter { get; set; }
-        public required TireType Type { get; set; }
+        public required TireType TireType { get; set; }
 
         public override string Describe()
         {
-            return $"Tire: {Name}, {Width}/{AspectRatio}R{Diameter}, {Type}, grip , {Price:C}, {Weight} kg";
+            return $"Tire: {Name}, {Width}/{AspectRatio}R{Diameter}, {TireType}, grip , {Price:C}, {Weight} kg";
            
         }
         public override int CalculateScore()
         {
-            int typeBase = Type switch
+            int typeBase = TireType switch
             {
                 TireType.Street => 40,
                 TireType.Sport => 60,
