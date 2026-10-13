@@ -49,9 +49,41 @@ build1.AddPart(tire);
 build1.AddPart(brake);
 
 
+Console.WriteLine(build1.GetTotalWeight());       
+Console.WriteLine(build1.GetTotalPrice());        
+Console.WriteLine(build1.GetTotalHorsepower());  
+Console.WriteLine(build1.GetTotalTorque());       
+Console.WriteLine(build2.GetAveragePartScore());  
+
+build1.RemovePart(engine);
+Console.WriteLine(build1.GetTotalHorsepower());  
+Console.WriteLine(build1.Parts.Count);
+
+Console.WriteLine(build1.GetAveragePartScore());   
+Console.WriteLine(build1.GetTotalWeight());        
+
+var newTire = new Tire {
+    Name = "Race Tires",
+    Diameter = 20,
+    Width = 250,
+    AspectRatio = 35,
+    TireType = TireType.Sport,
+    Weight = 25,
+    Price = 600
+};
+build1.ReplacePart(newTire);
+Console.WriteLine(build1.GetTotalWeight());        
+Console.WriteLine(build1.Parts.Count);            
+
+try { build1.RemovePart(engine); }                
+catch (InvalidOperationException ex) { Console.WriteLine(ex.Message); }
+
 try
 {
-    build1.AddPart(engine);   
+    build1.AddPart(engine);              
+    Console.WriteLine(build1.Parts.Count);   
+
+    build1.AddPart(engine);              
 }
 catch (InvalidOperationException ex)
 {
